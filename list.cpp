@@ -11,7 +11,7 @@ struct _list{
 };
 
 List* list_create(){
-  return (List*)malloc(sizeof(struct _list));
+  return (List*)malloc(sizeof(List));
 }
 void list_delete(List *list){
   free(list);
@@ -35,6 +35,7 @@ void list_add(List *list, void *data){
 void list_insert_after(Node *node, void *data){
   Node* newNode=(Node*)malloc(sizeof(Node));
   newNode->data=data;
+  newNode->next=0;
 
   newNode->next=node->next;
   node->next=newNode;
